@@ -102,6 +102,7 @@ print (Datos_origen.describe())
 
 # Layout de la gráfica:
 sns.set_style("darkgrid", {"axes.facecolor": ".9"})   # Cfr. documentación de Seaborn.
+# Estos son otros temas de sns: darkgrid, whitegrid, dark, white y ticks.
 # Comando para dibujar los datos:
 print (Datos_origen.Rooms.describe())
 sns.distplot(Datos_origen.Rooms.dropna(), kde=False, color=".2")
@@ -153,8 +154,31 @@ Datos_origen.plot.scatter('Rooms','Price')
 plt.show()
 
 
-# 9.WEBERÍA
-# ---------
+# 9. OTRAS VISUALIZACIONES GRÁFICAS MUY INTERESANTES
+# --------------------------------------------------
+# Gráficos de cajas (boxplot)
+
+sns.set_style("dark")
+plt.figure(figsize=(8, 5))
+
+# Primer gráfico - Boxplot de 2 variables
+plt.subplot(2, 1, 1)
+plt.xticks(())      # Elimina las marcas en el eje x.
+plt.yticks(())      # Elimina las marcas en el eje y.
+sns.boxplot(x='Rooms', y='Price', data=Datos_origen)
+
+# Segundo gráfico - Boxplot de 3 variables
+plt.subplot(2, 1, 2)
+plt.xticks(())
+plt.yticks(())
+sns.boxplot(x='Rooms', y='Price', data=Datos_origen, hue='Type')
+
+plt.tight_layout()
+plt.show()
+
+
+# 10.WEBERÍA
+# ----------
 # Para operaciones del tipo: añadir/eliminar columnas o filas, crear columnas calculadas
 # a partir de los datos originales, etc:
 # https://relopezbriega.github.io/blog/2016/09/18/visualizaciones-de-datos-con-python/
